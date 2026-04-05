@@ -1,0 +1,42 @@
+obstacle_detector:
+  ros__parameters:
+    use_scan: true
+    use_pcl: false
+
+    use_split_and_merge: true
+    circles_from_visibles: true
+    discard_converted_segments: false
+    transform_coordinates: true
+
+    # --- GROUPING (tính lại theo 360 samples, 360°) ---
+    min_group_points: 5
+    max_group_distance: 0.10       # OK vì gap max ở 5m chỉ ~0.087m
+    distance_proportion: 0.00873   #  Sửa: 2π/360 / 2 = 0.00873
+    
+    # --- SEGMENTATION ---
+    max_split_distance: 0.15       # Giảm nhẹ: lidar này đủ dày điểm
+    max_merge_separation: 0.9     # Giảm nhẹ để tránh merge nhầm
+    max_merge_spread: 0.9
+
+    # --- CIRCLE ---
+    max_circle_radius: 0.2        # Giữ nguyên, phù hợp phát hiện người
+    radius_enlargement: 0.1
+
+    # --- VÙNG QUAN SÁT ---
+    min_x_limit: -15.0
+    max_x_limit:  15.0
+    min_y_limit: -15.0
+    max_y_limit:  15.0
+
+    frame_id: "map"
+
+obstacle_tracker:
+  ros__parameters:
+    loop_rate: 20.0                # Khớp với update_rate lidar
+    tracking_duration: 2.0
+    min_correspondence_cost: 0.4
+    std_correspondence_dev: 0.15
+
+    process_variance: 0.01
+    process_rate_variance: 0.01
+    measurement_variance: 0.01     #  Giảm mạnh: lidar sim noise rất thấp (stddev=0.01)
