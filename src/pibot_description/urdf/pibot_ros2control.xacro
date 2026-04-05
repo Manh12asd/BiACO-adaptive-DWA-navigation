@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pibot">
+
+    <ros2_control name="RobotSystem" type="system">
+        <!--Plugin ignition gazebo
+        <hardware>
+            <plugin>ign_ros2_control/IgnitionSystem</plugin>
+        </hardware>
+        -->  
+        
+        <!-- ros2_control Real Robot
+        <hardware>
+            <plugin>bumperbot_firmware/BumperbotInterface</plugin>
+            <param name="port">/dev/arduino</param>
+        </hardware> 
+        -->
+        <hardware>
+            <plugin>laptopbot_firmware/LaptopbotInterface</plugin>
+            <param name="port">/dev/esp32</param>
+        </hardware> 
+        
+        <!-- ros2_control Common Interfaces -->
+        <joint name="wheel_left_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+        <joint name="wheel_right_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+        
+    </ros2_control>
+
+</robot>

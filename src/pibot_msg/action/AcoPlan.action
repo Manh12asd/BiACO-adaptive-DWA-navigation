@@ -1,0 +1,10 @@
+# Goal
+geometry_msgs/PoseStamped goal_pose
+---
+# Result
+nav_msgs/Path path
+float64 total_length
+---
+# Feedback
+int32 iteration
+float64 current_best_length

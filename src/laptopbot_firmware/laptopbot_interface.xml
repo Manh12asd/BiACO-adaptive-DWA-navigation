@@ -1,0 +1,10 @@
+<library path="laptopbot_firmware">
+    <class name="laptopbot_firmware/LaptopbotInterface"
+      type="laptopbot_firmware::LaptopbotInterface"
+      base_class_type="hardware_interface::SystemInterface"
+    >
+      <description>
+        Laptopbot Hardware Interface
+      </description>
+    </class>
+  </library>

@@ -1,0 +1,10 @@
+<library path="pibot_controller">
+    <class name="pibot_controller/BumperbotInterface"
+      type="pibot_controller::BumperbotInterface"
+      base_class_type="hardware_interface::SystemInterface"
+    >
+      <description>
+        Bumperbot Hardware Interface
+      </description>
+    </class>
+  </library>
